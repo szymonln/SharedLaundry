@@ -1,0 +1,176 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shared Laundry</title>
+    <link href="styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <style>
+
+        body {
+            background-color: #2a6287;
+        }
+
+        .flex-container1 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .text-style {
+            font-weight: 300;
+            font-family: "lato";
+            font-size: 0.9em;
+            color: white;
+            padding-left: 4px;
+        }
+
+        .flex-container2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 90%;
+        }
+
+        .header {
+            font-size: 47px;
+            color: white;
+            font-weight: 300;
+            font-family: "lato"
+        }
+
+        .subtitle {
+            font-size: 11px;
+            color: white;
+            font-weight: 300;
+            font-family: "lato";
+            line-height: 0.4;
+            margin-left: 2px;
+        }
+
+        .order-laundry {
+            background-color: white;
+            width: 164px;
+            height: 60px;
+            border-radius: 4px;
+            border: none;
+            font-size: 14px;
+            font-weight: lighter;
+        }
+
+        .flex-container3 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-button {
+            background-color: white;
+            width: 120px;
+            height: 34px;
+            border-radius: 4px;
+            border: none;
+            font-size: 10px;
+            font-weight: lighter;
+            margin-top: 18px;
+        }
+
+        .search-title {
+            font-size: 12px;
+            font-weight: 300;
+            font-family: "lato";
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .search {
+            width: 54%;
+            text-align: center;
+        }
+
+        .search-field {
+            border: none;
+            border-radius: 12px;
+            height: 1.9em;
+            width: 100%;
+            margin-right: 4px;
+        }
+
+        .flex-container4 {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon-style {
+            color: white;
+        }
+
+        .search .icon-style {
+            font-size: 36px;
+        }
+
+        .header-style {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container1">
+        <div class="flex-container4">
+            <i class="material-icons icon-style">account_circle</i>
+        <div class="text-style">
+            Jan Kowalski
+        </div>
+        </div>
+
+        <div class="text-style">
+            <i class="material-icons icon-style">notifications</i>
+        </div>
+    </div>
+    <div class="flex-container2">
+        <div class="header-style">
+        <div class="header">
+            Laundry
+        </div>
+        <div class="subtitle">
+            Shared laundry made simple
+        </div>
+        </div>
+        <div class="flex-container3">
+            <form action="" method="post">
+                {% csrf_token %}
+                <button class="order-laundry" type="submit" name="book" value="book">
+                    Rezerwuj pranie
+                </button>
+            </form>
+            <button class="menu-button">
+                Twoja najbliższa rezerwacja
+            </button>
+            <button class="menu-button">
+                Powiadomienia
+            </button>
+            <button class="menu-button">
+                Zgłoś awarię
+            </button>
+            <button class="menu-button">
+                Zgłoś użytkownika
+            </button>
+        </div>
+        <div class="search">
+            <div class="search-title">
+                Wyszukaj użytkownika, rezerwację, lub przeszukaj historię zgłoszeń
+            </div>
+            <div class="flex-container4">
+            <input class="search-field" type="text"/>
+            <i class="material-icons icon-style">search</i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

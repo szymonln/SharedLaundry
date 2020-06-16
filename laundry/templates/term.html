@@ -22,7 +22,7 @@
             font-family: "lato";
             font-weight: 300;
             color: white;
-            margin-top: 30%;
+            margin-top: 5%;
         }
 
         h5 {
@@ -60,6 +60,14 @@
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-light">
+        <a class="navbar-brand" href="/size">
+            <h3 style="margin-left:5px; margin-top:5px"><i class="fas fa-chevron-left"></i></h3>
+        </a>
+        <a href="/">
+            <h3 style="margin-left:5px; margin-top:5px; margin-right:5px"><i class="fas fa-times"></i></h3>
+        </a>
+    </nav>
     <div class="container-fluid" style="padding:0px">
 
         <div class="container">
@@ -75,27 +83,27 @@
                     </span>
                     <span  style="font-size:13">{{term.date}}</span>
                     <div>
-                        <h5>Pralka #5</h5>
+                        <h5>Pralka #{{term.num}}</h5>
                     </div>
                     {% if term.shared %}
                         <div class="row" style="margin-top:0px; margin-left:auto">
-                            <div style="font-size:15; padding-top:3px; margin-bottom:5px">
+                            <div style="font-size:15; position:relative; bottom:5px; padding-top:0px; margin-bottom:5px">
                                 <span class="material-icons" style="padding-top:3px;">
                                 person
                                 </span>
                             </div>
-                            <div style="font-size:15; padding-top:5px; margin-bottom:10px; margin-left:5px">
+                            <div style="font-size:15; padding-top:0px; margin-bottom:10px; margin-left:5px">
                                 <span>Pranie samodzielne</span>
                             </div>
                         </div>
                     {% else %}
                         <div class="row" style="margin-top:0px; margin-left:auto">
-                            <div style="font-size:15; padding-top:3px; margin-bottom:5px; margin-left:5px">
+                            <div style="font-size:15; position:relative; bottom:5px; padding-top:0px; margin-bottom:5px">
                                 <span class="material-icons" style="padding-top:3px;">
                                 people
                                 </span>
                             </div>
-                            <div style="font-size:15; padding-top:5px; margin-bottom:10px; margin-left:5px">
+                           <div style="font-size:15; padding-top:0px; margin-bottom:10px; margin-left:5px">
                                 <span>Pranie współdzielone</span>
                             </div>
                         </div>
@@ -108,6 +116,9 @@
                 </div>
              {% endfor %}
         </form>
+    </div>
+    <div class="container-fluid text-center" style="position:relative; left:25px">
+            <span><i class="fas fa-ellipsis-h" style="margin-right:5px"></i> Załaduj więcej terminów</span>
     </div>
 </body>
 </html>

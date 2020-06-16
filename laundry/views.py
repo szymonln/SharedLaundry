@@ -4,13 +4,19 @@ from django.http import HttpResponseRedirect
 
 mock_terms = {
     "terms": [
-        {"date": "Śr. 12.05.2021 17:30", "shared": True, "index": 0},
-        {"date": "Śr. 12.05.2021 19:30", "shared": False, "index": 1},
-        {"date": "Śr. 12.05.2021 21:30", "shared": True, "index": 2},
-        {"date": "Czw. 20.05.2021 17:30", "shared": False, "index": 3},
-        {"date": "Pt. 21.05.2021 17:30", "shared": False, "index": 4}
+        {"date": "Śr. 12.05.2021 17:30", "shared": True, "index": 0, "num": 12},
+        {"date": "Śr. 12.05.2021 19:30", "shared": False, "index": 1, "num": 3},
+        {"date": "Śr. 12.05.2021 21:30", "shared": True, "index": 2, "num": 8},
+        {"date": "Czw. 20.05.2021 17:30", "shared": False, "index": 3, "num": 6},
     ]
 }
+
+
+def main(request):
+    if request.method == 'POST':
+        if request.POST.get('book'):
+            return HttpResponseRedirect('/color')
+    return render(request, 'main.html')
 
 
 def choose_color(request):
@@ -39,10 +45,16 @@ def choose_term(request):
 
 
 def confirm_term(request):
+    color_text = {'black': 'Czarne', 'white': 'Białe', 'colored': 'Kolor'}
+    size_text = {'small': 'Małe', 'medium': 'Średnie', 'big': 'Duże'}
+
     chosen_term = {
         "date": mock_terms['terms'][int(request.session['term'])]['date'],
         "shared": mock_terms['terms'][int(request.session['term'])]['shared'],
         "color": request.session['color'],
+        "color_text": color_text[request.session['color']],
         "size": request.session['size'],
+        "size_text": size_text[request.session['size']]
     }
     return render(request, 'confirm.html', chosen_term)
+

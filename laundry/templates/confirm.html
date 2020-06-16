@@ -5,6 +5,7 @@
 <head>
     <title>Shared Laundry</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -22,7 +23,7 @@
             font-family: "lato";
             font-weight: 300;
             color: white;
-            margin-top: 30%;
+            margin-top: 10%;
         }
 
         h5 {
@@ -50,28 +51,124 @@
             margin-top:30px;
         }
 
+
+         #circle-white {
+            width: 80px;
+            height: 80px;
+            -webkit-border-radius: 40px;
+            -moz-border-radius: 40px;
+            border-radius: 40px;
+            background: white;
+         }
+
+         #circle-black {
+           width: 80px;
+            height: 80px;
+            -webkit-border-radius: 40px;
+            -moz-border-radius: 40px;
+            border-radius: 40px;
+            background: black;
+         }
+
+         #circle-colored {
+           width: 80px;
+            height: 80px;
+            -webkit-border-radius: 40px;
+            -moz-border-radius: 40px;
+            border-radius: 40px;
+            background: -moz-linear-gradient(top, rgba(193,40,1,1) 0%, rgba(92,196,1,0.64) 100%);
+            background: -webkit-linear-gradient(top, rgba(193,40,1,1) 0%,rgba(92,196,1,0.64) 100%);
+            background: linear-gradient(to bottom, rgba(193,40,1,1) 0%,rgba(92,196,1,0.64) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c12801', endColorstr='#a35cc401',GradientType=0 );
+         }
+
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-light">
+        <a class="navbar-brand" href="/term">
+            <h3 style="margin-left:5px; margin-top:5px"><i class="fas fa-chevron-left"></i></h3>
+        </a>
+        <a href="/">
+            <h3 style="margin-left:5px; margin-top:5px; margin-right:5px"><i class="fas fa-times"></i></h3>
+        </a>
+    </nav>
     <div class="container-fluid" style="padding:0px">
 
         <div class="container">
              <h3 class="text-center">Potwierdź rezerwację</h3>
         </div>
 
-        <div class="container darker term-item">
-            <span class="material-icons-outlined" style="font-size:18; padding-top:5px">
+        <div class="container darker term-item" style="padding-top:5px">
+            <span class="material-icons-outlined" style="font-size:20; padding-top:5px">
                 calendar_today
             </span>
-            <span  style="font-size:16">{{date}}</span>
-
-            <div style="margin-top:15px">
-                <span class="material-icons" style="font-size:80">
-                local_laundry_service
-                </span>
-                <span style="position:relative; top:-50px; font-weight:400">Pralka #5</span>
+            <div style="position:relative; top:-20px; left: 30px">
+                <span  style="font-size:16">{{date}}</span>
             </div>
 
+            <div>
+                <span class="material-icons" style="font-size:100">
+                local_laundry_service
+                </span>
+
+                <span style="position:relative; top:-70px; font-weight:400">Pralka #5</span>
+
+                {% if shared %}
+                <div class="row" style="position:relative; bottom:70px; left:120px">
+                            <div style="font-size:15; padding-top:3px; margin-bottom:5px">
+                                <span class="material-icons" style="padding-top:3px;">
+                                person
+                                </span>
+                            </div>
+                            <div style="font-size:15; padding-top:5px; margin-bottom:10px; margin-left:5px">
+                                <span>Pranie samodzielne</span>
+                            </div>
+                </div>
+                {% else %}
+                <div class="row" style="position:relative; bottom:70px; left:120px">
+                            <div style="font-size:15; padding-top:3px; margin-bottom:5px">
+                                <span class="material-icons" style="padding-top:3px;">
+                                people
+                                </span>
+                            </div>
+                            <div style="font-size:15; padding-top:5px; margin-bottom:10px; margin-left:5px">
+                                <span>Pranie współdzielone</span>
+                            </div>
+                </div>
+                {% endif %}
+
+                <div class="btn rounded-sm bg-white" style="position:relative; top:-70px; right:-105px; font-weight:300; padding-top: 0px; padding-bottom: 0px; padding-left:5px; padding-right:5px">
+                    <span style="font-size:13px; color:black;">Udzielono zgody na współdzielenie</span>
+                </div>
+            </div>
+
+           <div class="row" style="padding-bottom:10px; position:relative; bottom:20px">
+                    <div class="col text-center " style="margin: auto">
+                        <div id="circle-{{color}}" style="position:relative; left:35px"></div>
+                        <div class="subtitle">
+                            <span>{{color_text}}</span>
+                        </div>
+                    </div>
+                    <div class="col text-center" style="margin: auto; position:relative; right:60px">
+                        <span class="material-icons" style="font-size:60;">
+                        menu
+                        </span>
+                        <div class="subtitle" style="position:relative; top:4px;">
+                            <span>{{size_text}}</span>
+                        </div>
+                    </div>
+           </div>
+
+        </div>
+
+        <div class="container text-center" style="margin-top:15px">
+            <form action="confirm" method="post">
+                {% csrf_token %}
+                <button type="submit" name="confirm" value="confirm" class="btn rounded-sm border-white">
+                    <a href="/" style="font-weight:400; color:white"><i class="fas fa-check" style="margin-right:5px"></i>Potwierdzam rezerwację</a>
+                </button>
+            </form>
         </div>
 
     </div>
