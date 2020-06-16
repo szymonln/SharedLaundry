@@ -25,7 +25,7 @@ SECRET_KEY = 'sk&zlb-ccvup9$w8$fqp0lk+rxoh+f=6#i30wgvxub^1ns!2m*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://sharedlaundry.herokuapp.com/']
+ALLOWED_HOSTS = ['sharedlaundry.herokuapp.com']
 
 
 # Application definition
